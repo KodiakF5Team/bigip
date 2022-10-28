@@ -140,43 +140,43 @@ extension_services:
             class: ManagementRoute
             gw: '{{{ MGMT_GW }}}'
             network: 169.254.169.254/32
-          external:
+          internet:
             class: VLAN
             tag: 4094
             mtu: 1500
             interfaces:
               - name: '1.2'
                 tagged: false
-          external-self:
+          internet-self:
             class: SelfIp
             address: '{{{ SELF_IP_EXTERNAL }}}'
-            vlan: external
+            vlan: internet
             allowService: none
             trafficGroup: traffic-group-local-only
-          external2:
+          mobility:
             class: VLAN
             tag: 4090
             mtu: 1500
             interfaces:
               - name: '1.3'
                 tagged: false
-          external2-self:
+          mobility-self:
             class: SelfIp
             address: '{{{ SELF_IP_EXTERNAL2 }}}'
-            vlan: external2
+            vlan: mobility
             allowService: none
             trafficGroup: traffic-group-local-only
-          external3:
+          oam:
             class: VLAN
             tag: 4091
             mtu: 1500
             interfaces:
               - name: '1.4'
                 tagged: false
-          external3-self:
+          oam-self:
             class: SelfIp
             address: '{{{ SELF_IP_EXTERNAL3 }}}'
-            vlan: external3
+            vlan: oam
             allowService: none
             trafficGroup: traffic-group-local-only
           internal:
