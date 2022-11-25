@@ -21,13 +21,27 @@ runtime_parameters:
     headers:
       - name: Metadata
         value: true
-  - name: SELF_IP_EXTERNAL5
+  - name: SELF_IP_EXTERNAL7
+    type: metadata
+    metadataProvider:
+      environment: azure
+      type: network
+      field: ipv6
+      index: 6
+  - name: SELF_IP_EXTERNAL6
     type: metadata
     metadataProvider:
       environment: azure
       type: network
       field: ipv4
       index: 6
+  - name: SELF_IP_EXTERNAL5
+    type: metadata
+    metadataProvider:
+      environment: azure
+      type: network
+      field: ipv6
+      index: 5
   - name: SELF_IP_EXTERNAL4
     type: metadata
     metadataProvider:
@@ -193,32 +207,44 @@ extension_services:
             vlan: oam
             allowService: none
             trafficGroup: traffic-group-local-only
-          internetipv6:
+          ipv6internet:
             class: VLAN
             tag: 4080
             mtu: 1500
             interfaces:
               - name: '1.5'
                 tagged: false
-          internetipv4-self:
+          ipv4internet-self:
             class: SelfIp
             address: '{{{ SELF_IP_EXTERNAL4 }}}'
-            vlan: internetipv6
+            vlan: ipv6internet
             allowService: none
-            trafficGroup: traffic-group-local-only	  
-          mobilityipv6:
+            trafficGroup: traffic-group-local-only
+          ipv6internet-self:
+            class: SelfIp
+            address: '{{{ SELF_IP_EXTERNAL5 }}}'
+            vlan: ipv6internet
+            allowService: none
+            trafficGroup: traffic-group-local-only		  
+          ipv6mobility:
             class: VLAN
             tag: 4081
             mtu: 1500
             interfaces:
               - name: '1.6'
                 tagged: false
-          mobilityipv4-self:
+          ipv4mobility-self:
             class: SelfIp
-            address: '{{{ SELF_IP_EXTERNAL5 }}}'
-            vlan: mobilityipv6
+            address: '{{{ SELF_IP_EXTERNAL6 }}}'
+            vlan: ipv6mobility
             allowService: none
             trafficGroup: traffic-group-local-only
+          ipv6mobility-self:
+            class: SelfIp
+            address: '{{{ SELF_IP_EXTERNAL7 }}}'
+            vlan: ipv6mobility
+            allowService: none
+            trafficGroup: traffic-group-local-only		  
           internal:
             class: VLAN
             tag: 4093
