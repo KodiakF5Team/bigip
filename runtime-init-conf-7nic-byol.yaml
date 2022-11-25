@@ -21,6 +21,34 @@ runtime_parameters:
     headers:
       - name: Metadata
         value: true
+  - name: SELF_IP_EXTERNAL7
+    type: metadata
+    metadataProvider:
+      environment: azure
+      type: network
+      field: ipv6
+      index: 6
+  - name: SELF_IP_EXTERNAL6
+    type: metadata
+    metadataProvider:
+      environment: azure
+      type: network
+      field: ipv4
+      index: 6
+  - name: SELF_IP_EXTERNAL5
+    type: metadata
+    metadataProvider:
+      environment: azure
+      type: network
+      field: ipv6
+      index: 5
+  - name: SELF_IP_EXTERNAL4
+    type: metadata
+    metadataProvider:
+      environment: azure
+      type: network
+      field: ipv4
+      index: 5
   - name: SELF_IP_EXTERNAL3
     type: metadata
     metadataProvider:
@@ -88,7 +116,7 @@ extension_services:
         schemaVersion: 1.0.0
         class: Device
         async: true
-        label: Example 3NIC BIG-IP with Runtime-Init
+        label: Example 7NIC BIG-IP with Runtime-Init
         Common:
           class: Tenant
           My_DbVariables:
@@ -179,6 +207,44 @@ extension_services:
             vlan: oam
             allowService: none
             trafficGroup: traffic-group-local-only
+          internetipv6:
+            class: VLAN
+            tag: 4080
+            mtu: 1500
+            interfaces:
+              - name: '1.5'
+                tagged: false
+          internetipv4-self:
+            class: SelfIp
+            address: '{{{ SELF_IP_EXTERNAL4 }}}'
+            vlan: internetipv6
+            allowService: none
+            trafficGroup: traffic-group-local-only
+          internetipv6-self:
+            class: SelfIp
+            address: '{{{ SELF_IP_EXTERNAL5 }}}'
+            vlan: internetipv6
+            allowService: none
+            trafficGroup: traffic-group-local-only		  
+          mobilityipv6:
+            class: VLAN
+            tag: 4081
+            mtu: 1500
+            interfaces:
+              - name: '1.6'
+                tagged: false
+          mobilityipv4-self:
+            class: SelfIp
+            address: '{{{ SELF_IP_EXTERNAL6 }}}'
+            vlan: mobilityipv6
+            allowService: none
+            trafficGroup: traffic-group-local-only
+          mobilityipv6-self:
+            class: SelfIp
+            address: '{{{ SELF_IP_EXTERNAL7 }}}'
+            vlan: mobilityipv6
+            allowService: none
+            trafficGroup: traffic-group-local-only		  
           internal:
             class: VLAN
             tag: 4093
