@@ -21,13 +21,6 @@ runtime_parameters:
     headers:
       - name: Metadata
         value: true
-  - name: SELF_IP_EXTERNAL7
-    type: url
-    query: ipv6.ipAddress[0]
-    value: 'http://169.254.169.254/metadata/instance/network/interface/6?api-version=2017-08-01'
-    headers:
-      - name: Metadata
-        value: true  
   - name: SELF_IP_EXTERNAL6
     type: metadata
     metadataProvider:
@@ -35,13 +28,6 @@ runtime_parameters:
       type: network
       field: ipv4
       index: 6
-  - name: SELF_IP_EXTERNAL5
-    type: url
-    query: ipv6.ipAddress[0]
-    value: 'http://169.254.169.254/metadata/instance/network/interface/5?api-version=2017-08-01'
-    headers:
-      - name: Metadata
-        value: true
   - name: SELF_IP_EXTERNAL4
     type: metadata
     metadataProvider:
@@ -220,12 +206,6 @@ extension_services:
             vlan: ipv6internet
             allowService: none
             trafficGroup: traffic-group-local-only
-          ipv6internet-self:
-            class: SelfIp
-            address: '{{{ SELF_IP_EXTERNAL5 }}}'
-            vlan: ipv6internet
-            allowService: none
-            trafficGroup: traffic-group-local-only		  
           ipv6mobility:
             class: VLAN
             tag: 4081
@@ -239,12 +219,6 @@ extension_services:
             vlan: ipv6mobility
             allowService: none
             trafficGroup: traffic-group-local-only
-          ipv6mobility-self:
-            class: SelfIp
-            address: '{{{ SELF_IP_EXTERNAL7 }}}'
-            vlan: ipv6mobility
-            allowService: none
-            trafficGroup: traffic-group-local-only		  
           internal:
             class: VLAN
             tag: 4093
