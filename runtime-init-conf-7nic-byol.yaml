@@ -237,4 +237,8 @@ extension_services:
             gw: '{{{ DEFAULT_GW }}}'
             network: default
             mtu: 1500
+          My_sasUri:
+            class: SharedAccessSignature
+            AccountName: StorageF5
+            SharedAccessSignature: 'SAS_URI'
 post_onboard_enabled: []
