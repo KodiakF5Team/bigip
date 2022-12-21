@@ -192,27 +192,13 @@ extension_services:
             address: '{{{ SELF_IP_EXTERNAL3 }}}'
             vlan: oam
             allowService: none
-            trafficGroup: traffic-group-local-only
-          ipv6internet:
-            class: VLAN
-            tag: 4080
-            mtu: 1500
-            interfaces:
-              - name: '1.5'
-                tagged: false
+            trafficGroup: traffic-group-local-only        
           ipv4internet-self:
             class: SelfIp
             address: '{{{ SELF_IP_EXTERNAL4 }}}'
             vlan: ipv6internet
             allowService: none
-            trafficGroup: traffic-group-local-only
-          ipv6mobility:
-            class: VLAN
-            tag: 4081
-            mtu: 1500
-            interfaces:
-              - name: '1.6'
-                tagged: false
+            trafficGroup: traffic-group-local-only         
           ipv4mobility-self:
             class: SelfIp
             address: '{{{ SELF_IP_EXTERNAL6 }}}'
