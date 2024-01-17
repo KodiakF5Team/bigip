@@ -35,6 +35,14 @@ runtime_parameters:
       type: network
       field: ipv4
       index: 1
+  - name: INTERNAL_GW
+    type: metadata
+    metadataProvider:
+      environment: azure
+      type: network
+      field: ipv4
+      index: 1
+      ipcalc: first
   - name: DEFAULT_GW
     type: metadata
     metadataProvider:
@@ -156,5 +164,15 @@ extension_services:
             class: Route
             gw: '{{{ DEFAULT_GW }}}'
             network: default
-            mtu: 1500 
+            mtu: 1500
+          internalDefaultRoute_1:
+            class: Route
+            gw: '{{{ INTERNAL_GW }}}'
+            network: 10.7.1.0/24
+            mtu: 1500
+          internalDefaultRoute_2:
+            class: Route
+            gw: '{{{ INTERNAL_GW }}}'
+            network: 10.7.3.0/24
+            mtu: 1500  
 post_onboard_enabled: []
