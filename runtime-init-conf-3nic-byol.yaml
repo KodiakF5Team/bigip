@@ -179,16 +179,16 @@ extension_services:
           internalDefaultRoute_2:
             class: Route
             gw: '{{{ INTERNAL_GW }}}'
-            network: GEO_IPVLANROUTE_POC
+            network: PRI_IPVLANROUTE_GEO
             mtu: 1500
           internalDefaultRoute_3:
             class: Route
             gw: '{{{ INTERNAL_GW }}}'
-            network: PRI_IPVLANROUTE_GW
+            network: GW_IPVLANROUTE_POC
             mtu: 1500 
           internalDefaultRoute_4:
             class: Route
             gw: '{{{ INTERNAL_GW }}}'
-            network: GEO_IPVLANROUTE_GW
+            network: GW_IPVLANROUTE_GEO
             mtu: 1500   
 post_onboard_enabled: []
