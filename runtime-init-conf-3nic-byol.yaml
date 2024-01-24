@@ -171,22 +171,22 @@ extension_services:
             vlan: internal
             allowService: default
             trafficGroup: traffic-group-local-only  
-          internalDefaultRoute_1:
+          IpvlanRoutePri_Poc:
             class: Route
             gw: '{{{ INTERNAL_GW }}}'
             network: PRI_IPVLANROUTE_POC
             mtu: 1500
-          internalDefaultRoute_2:
+          IpvlanRoutePri_Geo:
             class: Route
             gw: '{{{ INTERNAL_GW }}}'
             network: PRI_IPVLANROUTE_GEO
             mtu: 1500
-          internalDefaultRoute_3:
+          IpvlanRouteGw_Poc:
             class: Route
             gw: '{{{ INTERNAL_GW }}}'
             network: GW_IPVLANROUTE_POC
             mtu: 1500 
-          internalDefaultRoute_4:
+          IpvlanRouteGw_Geo:
             class: Route
             gw: '{{{ INTERNAL_GW }}}'
             network: GW_IPVLANROUTE_GEO
