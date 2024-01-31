@@ -87,8 +87,7 @@ extension_services:
           class: Tenant
           My_DbVariables:
             class: DbVariables
-            provision.extramb: 1000
-            restjavad.useextramb: true
+            provision.extramb: 2022
             config.allow.rfc3927: enable
             dhclient.mgmt: disable
           My_System:
