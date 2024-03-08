@@ -6,7 +6,7 @@ pre_onboard_enabled:
     type: inline
     commands:
       - /usr/bin/setdb provision.extramb 2022
-      
+
 runtime_parameters:
   - name: HOST_NAME
     type: metadata
@@ -27,21 +27,21 @@ runtime_parameters:
       environment: azure
       type: network
       field: ipv4
-      index: 2
+      index: 1
   - name: SELF_IP_INTERNAL
     type: metadata
     metadataProvider:
       environment: azure
       type: network
       field: ipv4
-      index: 1
+      index: 2
   - name: INTERNAL_GW
     type: metadata
     metadataProvider:
       environment: azure
       type: network
       field: ipv4
-      index: 1
+      index: 2
       ipcalc: first
   - name: DEFAULT_GW
     type: metadata
@@ -49,7 +49,7 @@ runtime_parameters:
       environment: azure
       type: network
       field: ipv4
-      index: 2
+      index: 1
       ipcalc: first
   - name: MGMT_GW
     type: metadata
@@ -169,7 +169,7 @@ extension_services:
             address: IPVLAN_SELF_IP
             vlan: internal
             allowService: default
-            trafficGroup: traffic-group-local-only  
+            trafficGroup: traffic-group-local-only
           IpvlanRoutePri_Poc:
             class: Route
             gw: '{{{ INTERNAL_GW }}}'
@@ -184,10 +184,10 @@ extension_services:
             class: Route
             gw: '{{{ INTERNAL_GW }}}'
             network: GW_IPVLANROUTE_POC
-            mtu: 1500 
+            mtu: 1500
           IpvlanRouteGw_Geo:
             class: Route
             gw: '{{{ INTERNAL_GW }}}'
             network: GW_IPVLANROUTE_GEO
-            mtu: 1500   
+            mtu: 1500
 post_onboard_enabled: []
