@@ -27,21 +27,21 @@ runtime_parameters:
       environment: azure
       type: network
       field: ipv4
-      index: 1
+      index: 2
   - name: SELF_IP_INTERNAL
     type: metadata
     metadataProvider:
       environment: azure
       type: network
       field: ipv4
-      index: 2
+      index: 1
   - name: INTERNAL_GW
     type: metadata
     metadataProvider:
       environment: azure
       type: network
       field: ipv4
-      index: 2
+      index: 1
       ipcalc: first
   - name: DEFAULT_GW
     type: metadata
@@ -49,7 +49,7 @@ runtime_parameters:
       environment: azure
       type: network
       field: ipv4
-      index: 1
+      index: 2
       ipcalc: first
   - name: MGMT_GW
     type: metadata
