@@ -6,6 +6,7 @@ pre_onboard_enabled:
     type: inline
     commands:
       - /usr/bin/setdb provision.extramb 2022
+      - tmsh modify sys db provision.restjavad.extramb value 2048
 
 runtime_parameters:
   - name: HOST_NAME
