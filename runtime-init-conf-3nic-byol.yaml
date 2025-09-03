@@ -206,12 +206,12 @@ extension_services:
           gw: "{{{ INTERNAL_GW }}}"
           network: GEO_IPVLANROUTE_POC
           mtu: 1500
-        IpvlanRoutePri_Gw:
+        IpvlanRoutePri_gw:
           class: Route
           gw: "{{{ INTERNAL_GW }}}"
           network: PRI_IPVLANROUTE_GW
           mtu: 1500
-        IpvlanRouteGeo_Gw:
+        IpvlanRouteGeo_gw:
           class: Route
           gw: "{{{ INTERNAL_GW }}}"
           network: GEO_IPVLANROUTE_GW
