@@ -76,6 +76,7 @@ extension_services:
           config.allow.rfc3927: enable
           dhclient.mgmt: disable
           systemauth.disablerootlogin: true
+          systemauth.primaryadminuser: kodiakf5
           provision.tomcat.extramb: 256
 
         My_System:
@@ -126,7 +127,7 @@ extension_services:
           class: NTP
           servers:
           - 0.pool.ntp.org
-          timezone: UTC
+          timezone: timezone
         My_Provisioning:
           class: Provision
           ltm: nominal
