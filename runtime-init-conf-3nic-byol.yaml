@@ -126,7 +126,7 @@ extension_services:
           class: NTP
           servers:
           - 0.pool.ntp.org
-          timezone: TiMEZONE
+          timezone: TiME_ZONE
         My_Provisioning:
           class: Provision
           ltm: nominal
