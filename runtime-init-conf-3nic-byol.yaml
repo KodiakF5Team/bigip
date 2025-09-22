@@ -170,7 +170,7 @@ extension_services:
           class: SelfIp
           address: "{{{ SELF_IP_EXTERNAL }}}"
           vlan: external
-          allowService: none
+          allowService: default
           trafficGroup: traffic-group-local-only
         internal:
           class: VLAN
